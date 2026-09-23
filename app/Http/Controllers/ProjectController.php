@@ -113,6 +113,11 @@ class ProjectController extends Controller
         ],
     ];
 
+    public function getProjects(): array
+    {
+        return $this->projects;
+    }
+
     public function index(): View
     {
         $projects = $this->projects;

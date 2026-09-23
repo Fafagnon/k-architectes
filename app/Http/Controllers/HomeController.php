@@ -14,6 +14,8 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('pages.home', compact('articles'));
+        $projects = (new ProjectController())->getProjects();
+
+        return view('pages.home', compact('articles', 'projects'));
     }
 }

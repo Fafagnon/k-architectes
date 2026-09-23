@@ -189,21 +189,30 @@
     }
   }
 
-  /* 6. Carrousel Projets en Center Mode avec Zoom et Pause au survol */
-  const elCarrousel = document.querySelector('.swiper-projets');
-  if (elCarrousel && typeof Swiper !== 'undefined') {
+  /* 6. Carrousel Projets en Center Mode avec Défilement Automatique Continu */
+  function initSwiperProjets() {
+    const elCarrousel = document.querySelector('.swiper-projets');
+    if (!elCarrousel) return;
+    if (typeof Swiper === 'undefined') {
+      setTimeout(initSwiperProjets, 60);
+      return;
+    }
+    if (elCarrousel.swiper) return;
+
     new Swiper(elCarrousel, {
       slidesPerView: 'auto',
       centeredSlides: true,
       spaceBetween: 24,
       loop: true,
+      loopedSlides: 6,
       loopAdditionalSlides: 4,
-      speed: 750,
+      speed: 800,
       grabCursor: true,
+      watchSlidesProgress: true,
       autoplay: {
-        delay: 2500,
+        delay: 2600,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true,
+        pauseOnMouseEnter: false,
       },
       pagination: {
         el: '.swiper-pagination',
@@ -225,6 +234,12 @@
         },
       },
     });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSwiperProjets);
+  } else {
+    initSwiperProjets();
   }
 
   /* 7. Diaporama des projets : une seule photo à la fois, flèches précédent/suivant et décompte (ex: 1/4) */

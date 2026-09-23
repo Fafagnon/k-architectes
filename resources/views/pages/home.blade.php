@@ -62,68 +62,20 @@
   <div class="carrousel-wrapper">
     <div class="swiper swiper-projets" aria-label="Galerie des projets à la une">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a class="projet-card" href="{{ route('realisations.show', 'villa-agoe') }}" aria-label="Voir la Villa Agoè">
-            <div class="cadre projet-card__photo">
-              <img src="{{ asset('assets/img/projet-01-couverture.jpg') }}" alt="Villa Agoè" loading="lazy" decoding="async">
-              <div class="projet-card__survol" aria-hidden="true">
-                <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-              </div>
+        @if(isset($projects) && !empty($projects))
+          @foreach($projects as $slug => $projet)
+            <div class="swiper-slide">
+              <a class="projet-card" href="{{ route('realisations.show', $slug) }}" aria-label="Voir {{ $projet['titre'] }}">
+                <div class="cadre projet-card__photo">
+                  <img src="{{ asset($projet['couverture']) }}" alt="{{ $projet['titre'] }}" loading="lazy" decoding="async">
+                  <div class="projet-card__survol" aria-hidden="true">
+                    <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a class="projet-card" href="{{ route('realisations.show', 'immeuble-tokoin') }}" aria-label="Voir l'Immeuble de bureaux Tokoin">
-            <div class="cadre projet-card__photo">
-              <img src="{{ asset('assets/img/projet-02-couverture.jpg') }}" alt="Immeuble de bureaux Tokoin" loading="lazy" decoding="async">
-              <div class="projet-card__survol" aria-hidden="true">
-                <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a class="projet-card" href="{{ route('realisations.show', 'residence-adidogome') }}" aria-label="Voir la Résidence Adidogomé">
-            <div class="cadre projet-card__photo">
-              <img src="{{ asset('assets/img/projet-03-couverture.jpg') }}" alt="Résidence Adidogomé" loading="lazy" decoding="async">
-              <div class="projet-card__survol" aria-hidden="true">
-                <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a class="projet-card" href="{{ route('realisations.show', 'ecole-kpalime') }}" aria-label="Voir l'École de Kpalimé">
-            <div class="cadre projet-card__photo">
-              <img src="{{ asset('assets/img/projet-04-couverture.jpg') }}" alt="École de Kpalimé" loading="lazy" decoding="async">
-              <div class="projet-card__survol" aria-hidden="true">
-                <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Duplication pour une boucle infinie continue et fluide -->
-        <div class="swiper-slide" aria-hidden="true">
-          <a class="projet-card" href="{{ route('realisations.show', 'villa-agoe') }}" tabindex="-1">
-            <div class="cadre projet-card__photo">
-              <img src="{{ asset('assets/img/projet-01-couverture.jpg') }}" alt="" loading="lazy" decoding="async">
-              <div class="projet-card__survol" aria-hidden="true">
-                <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide" aria-hidden="true">
-          <a class="projet-card" href="{{ route('realisations.show', 'immeuble-tokoin') }}" tabindex="-1">
-            <div class="cadre projet-card__photo">
-              <img src="{{ asset('assets/img/projet-02-couverture.jpg') }}" alt="" loading="lazy" decoding="async">
-              <div class="projet-card__survol" aria-hidden="true">
-                <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
+          @endforeach
+        @endif
       </div>
     </div>
     <div class="carrousel-navigation">
