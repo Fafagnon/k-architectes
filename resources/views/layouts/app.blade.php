@@ -37,8 +37,8 @@
 <header class="entete">
   <div class="conteneur entete__interieur">
     <a class="marque" href="{{ route('home') }}" aria-label="K-ARCHITECTES, accueil">
-      <img src="{{ asset('assets/img/logo-k.png') }}" alt="K-ARCHITECTES" class="marque__logo" style="height:28px; width:auto; display:inline-block; vertical-align:middle;">
-      <span class="marque__texte sr-only"><span class="nb">K-ARCHITECTES</span>.</span>
+      <img src="{{ asset('assets/img/logo-k-embleme.png') }}" alt="" class="marque__logo" style="height:34px; width:auto; margin-right:12px; display:inline-block; vertical-align:middle;">
+      <span class="marque__texte"><span class="nb">K-ARCHITECTES</span>.</span>
     </a>
     <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Navigation principale">
@@ -60,7 +60,7 @@
 
 <footer class="pied bande--noire">
   <div class="conteneur pied__haut">
-    <p class="pied__nom"><span class="nb">K-ARCHITECTES</span>.</p>
+    <p class="pied__nom" style="display:inline-flex; align-items:center; gap:12px;"><img src="{{ asset('assets/img/logo-k-embleme-blanc.png') }}" alt="" style="height:32px; width:auto; display:inline-block; vertical-align:middle;"><span><span class="nb">K-ARCHITECTES</span>.</span></p>
     <address>Agoè-Vakpossito, Rue NDE<br>(Notre-Dame de l'Église)<br>28 BP 305 Télessou<br>Lomé, Togo</address>
     <p><a href="mailto:archkortete@gmail.com">archkortete@gmail.com</a><br><a href="tel:+22822558638">(+228) 22 55 86 38</a><br><a href="tel:+22896500007">(+228) 96 50 00 07</a><br>Inscrit à l'<abbr title="Ordre national des architectes du Togo">ONAT</abbr></p>
   </div>

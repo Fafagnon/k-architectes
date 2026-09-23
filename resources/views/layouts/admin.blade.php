@@ -158,7 +158,7 @@
   <div class="conteneur admin-bar__inner">
     <div style="display: flex; align-items: center; gap: 16px;">
       <a href="{{ route('admin.dashboard') }}" style="display: flex; align-items: center; gap: 10px; color: var(--blanc); text-decoration: none;">
-        <img src="{{ asset('assets/img/logo-k.png') }}" alt="" style="height: 24px; width: auto; filter: invert(1);">
+        <img src="{{ asset('assets/img/logo-k-embleme-blanc.png') }}" alt="" style="height: 26px; width: auto; display: inline-block; vertical-align: middle;">
         <strong style="font-size: 1rem; letter-spacing: -.02em;">K-ARCHITECTES</strong>
       </a>
       <span style="background: var(--graphite); color: var(--blanc); font-size: .6875rem; font-weight: 700; padding: 2px 6px; letter-spacing: .08em; text-transform: uppercase;">Admin</span>

@@ -29,8 +29,8 @@
 
 <div class="login-box">
   <div style="margin-bottom: 32px; text-align: center;">
-    <a href="{{ route('home') }}" style="display: inline-block; margin-bottom: 16px;">
-      <img src="{{ asset('assets/img/logo-k.png') }}" alt="K-ARCHITECTES" style="height: 36px; width: auto;">
+    <a href="{{ route('home') }}" style="display: inline-block; margin-bottom: 20px;">
+      <img src="{{ asset('assets/img/logo-k-noir.png') }}" alt="K-ARCHITECTES" style="height: 48px; width: auto; display: block; margin: 0 auto;">
     </a>
     <h1 style="font-size: 1.5rem; letter-spacing: -.02em; margin-bottom: 8px;">Administration</h1>
     <p style="font-size: .875rem; color: var(--graphite); margin: 0;">Connectez-vous pour gérer les contenus du cabinet</p>
