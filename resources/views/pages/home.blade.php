@@ -35,11 +35,20 @@
       <img src="{{ asset('assets/img/accueil-ouverture.jpg') }}" alt="Cabinet d'architecture K-Architectes Lomé" loading="eager" fetchpriority="high" decoding="async">
     </div>
   </div>
-  <div class="ouverture__marque">
-    <h1 class="sr-only" id="titre-accueil">K-ARCHITECTES — Cabinet d'architecture à Lomé</h1>
-    <svg class="ouverture__nom" viewBox="0 0 1200 118" focusable="false" aria-hidden="true">
-      <text x="0" y="112" textLength="1200" lengthAdjust="spacingAndGlyphs">K-ARCHITECTES</text>
-    </svg>
+  <div class="conteneur ouverture__conteneur">
+    <div class="ouverture__bloc">
+      <h1 class="ouverture__titre" id="titre-accueil">
+        Concevoir avec justesse.<br>
+        Construire avec maîtrise.
+      </h1>
+      <p class="ouverture__chapeau">
+        Architecture, ingénierie et conseil pour accompagner les projets résidentiels, professionnels, institutionnels et d’aménagement, de la conception à la réalisation.
+      </p>
+      <div class="ouverture__actions">
+        <a href="{{ route('cabinet') }}" class="hero-bouton hero-bouton--primaire">Découvrir nos expertises</a>
+        <a href="{{ route('realisations.index') }}" class="hero-bouton hero-bouton--secondaire">Voir nos réalisations</a>
+      </div>
+    </div>
   </div>
 </section>
 

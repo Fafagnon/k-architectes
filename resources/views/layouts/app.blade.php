@@ -20,13 +20,13 @@
 <meta name="twitter:card" content="summary_large_image">
 @show
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
 <script>document.documentElement.classList.add('js')</script>
-@if (file_exists(public_path('build/manifest.json')) || app()->environment('local'))
-    @vite(['resources/css/app.css'])
-@else
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-@endif
+<link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 @stack('styles')
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}" defer></script>
 <script src="{{ asset('assets/js/main.js') }}" defer></script>

@@ -247,43 +247,104 @@ abbr[title] { text-decoration: none; cursor: help; }
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.22);
+  background: linear-gradient(135deg, rgba(11, 15, 23, 0.88) 0%, rgba(11, 15, 23, 0.74) 50%, rgba(11, 15, 23, 0.52) 100%);
   pointer-events: none;
 }
 
-/* Grand titre centré sur la photo, à l'image du template de référence */
-.ouverture__marque {
+/* Nouveau Hero éditorial K-ARCHITECTES */
+.ouverture__conteneur {
   position: relative;
-  z-index: 1;
-  width: min(100% - 2 * var(--marge), var(--largeur));
+  z-index: 2;
+  padding-block: clamp(64px, 10vw, 120px);
+}
+.ouverture__bloc {
+  max-width: 820px;
+  text-align: left;
+}
+.ouverture__titre {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--blanc);
+  margin: 0 0 clamp(20px, 3vw, 28px);
+}
+.ouverture__chapeau {
+  font-family: var(--police);
+  font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.25rem);
+  line-height: 1.6;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 760px;
+  margin: 0 0 clamp(28px, 4vw, 36px);
+}
+.ouverture__actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.hero-bouton {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  text-align: center;
+  min-height: 48px;
+  padding: 13px 26px;
+  font-family: var(--police);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  border-radius: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.ouverture__nom {
-  width: 100%;
-  max-width: 1100px;
-  height: auto;
-  overflow: visible;
-  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.5));
+.hero-bouton--primaire {
+  background: var(--blanc);
+  color: #0b0f19;
+  border: 1px solid var(--blanc);
 }
-.ouverture__nom text {
-  font: 700 150px var(--police);
-  fill: var(--blanc);
+.hero-bouton--primaire:hover {
+  background: var(--beton);
+  border-color: var(--beton);
+  color: #000000;
 }
+.hero-bouton--secondaire {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--blanc);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+.hero-bouton--secondaire:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--blanc);
+  color: var(--blanc);
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .ouverture__nom { animation: descente-titre 1.2s var(--doux) .2s both; }
+  .ouverture__bloc {
+    animation: apparition-hero 0.8s var(--doux) 0.1s both;
+  }
 }
-@keyframes descente-titre {
+@keyframes apparition-hero {
   from {
     opacity: 0;
-    transform: translateY(-80px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .ouverture__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-bouton {
+    width: 100%;
+    text-align: center;
   }
 }
 

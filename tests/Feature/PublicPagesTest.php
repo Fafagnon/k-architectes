@@ -17,6 +17,11 @@ class PublicPagesTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
         $response->assertSee("K-ARCHITECTES");
+        $response->assertSee("Concevoir avec justesse.");
+        $response->assertSee("Construire avec maîtrise.");
+        $response->assertSee("Architecture, ingénierie et conseil");
+        $response->assertSee("Découvrir nos expertises");
+        $response->assertSee("Voir nos réalisations");
         $response->assertSee("Réalisations à la une");
         $response->assertSee("Actualités");
     }
