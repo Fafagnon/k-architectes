@@ -369,9 +369,6 @@ abbr[title] { text-decoration: none; cursor: help; }
   overflow: visible !important;
   padding-block: 28px 36px !important;
 }
-.swiper-projets .swiper-wrapper {
-  transition-timing-function: linear !important;
-}
 
 .swiper-projets .swiper-slide {
   width: clamp(280px, 48vw, 660px);

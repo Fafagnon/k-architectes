@@ -189,7 +189,7 @@
     }
   }
 
-  /* 6. Carrousel Projets en Center Mode avec Défilement Automatique Continu */
+  /* 6. Carrousel Projets : Center Mode avec Zoom sur la slide active, Autoplay infini et navigation réactive */
   function initSwiperProjets() {
     const elCarrousel = document.querySelector('.swiper-projets');
     if (!elCarrousel) return;
@@ -199,18 +199,22 @@
     }
     if (elCarrousel.swiper) return;
 
+    // Duplication transparente côté client pour permettre à Swiper de boucler à l'infini en mode centré
+    const elWrapper = elCarrousel.querySelector('.swiper-wrapper');
+    if (elWrapper && elWrapper.children.length > 0 && elWrapper.children.length < 12) {
+      Array.from(elWrapper.children).forEach((s) => elWrapper.appendChild(s.cloneNode(true)));
+    }
+
     new Swiper(elCarrousel, {
       slidesPerView: 'auto',
       centeredSlides: true,
       spaceBetween: 32,
       loop: true,
-      loopedSlides: 6,
-      loopAdditionalSlides: 6,
-      speed: 4500,
+      speed: 800,
       grabCursor: true,
       watchSlidesProgress: true,
       autoplay: {
-        delay: 0,
+        delay: 2800,
         disableOnInteraction: false,
         pauseOnMouseEnter: false,
       },

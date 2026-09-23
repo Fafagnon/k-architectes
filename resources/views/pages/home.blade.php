@@ -63,20 +63,18 @@
     <div class="swiper swiper-projets" aria-label="Galerie des projets à la une">
       <div class="swiper-wrapper">
         @if(isset($projects) && !empty($projects))
-          @for($rep = 0; $rep < 3; $rep++)
-            @foreach($projects as $slug => $projet)
-              <div class="swiper-slide">
-                <a class="projet-card" href="{{ route('realisations.show', $slug) }}" aria-label="Voir {{ $projet['titre'] }}">
-                  <div class="cadre projet-card__photo">
-                    <img src="{{ asset($projet['couverture']) }}" alt="{{ $projet['titre'] }}" loading="lazy" decoding="async">
-                    <div class="projet-card__survol" aria-hidden="true">
-                      <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
-                    </div>
+          @foreach($projects as $slug => $projet)
+            <div class="swiper-slide">
+              <a class="projet-card" href="{{ route('realisations.show', $slug) }}" aria-label="Voir {{ $projet['titre'] }}">
+                <div class="cadre projet-card__photo">
+                  <img src="{{ asset($projet['couverture']) }}" alt="{{ $projet['titre'] }}" loading="lazy" decoding="async">
+                  <div class="projet-card__survol" aria-hidden="true">
+                    <span class="projet-card__badge">En savoir plus <span class="index__fleche">&rarr;</span></span>
                   </div>
-                </a>
-              </div>
-            @endforeach
-          @endfor
+                </div>
+              </a>
+            </div>
+          @endforeach
         @endif
       </div>
     </div>
