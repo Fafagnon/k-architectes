@@ -52,6 +52,43 @@
   </div>
 </section>
 
+<section class="section-vision" aria-labelledby="titre-vision">
+  <div class="conteneur">
+    <div class="section-vision__entete">
+      <h2 class="section-vision__titre" id="titre-vision">Une vision globale du projet.</h2>
+      <p class="section-vision__intro">
+        Nous partons du besoin, du contexte et des contraintes pour construire une réponse architecturale et<br class="vision-intro__br"> technique cohérente, adaptée à chaque mission.
+      </p>
+    </div>
+
+    <div class="vision-grille">
+      <div class="vision-etape">
+        <span class="vision-etape__numero">01</span>
+        <h3 class="vision-etape__titre">Comprendre</h3>
+        <p class="vision-etape__texte">Programme, site, usages et contraintes.</p>
+      </div>
+
+      <div class="vision-etape">
+        <span class="vision-etape__numero">02</span>
+        <h3 class="vision-etape__titre">Concevoir</h3>
+        <p class="vision-etape__texte">Architecture, fonctionnalité et identité.</p>
+      </div>
+
+      <div class="vision-etape">
+        <span class="vision-etape__numero">03</span>
+        <h3 class="vision-etape__titre">Étudier &amp; optimiser</h3>
+        <p class="vision-etape__texte">Solutions techniques, coûts et performance.</p>
+      </div>
+
+      <div class="vision-etape">
+        <span class="vision-etape__numero">04</span>
+        <h3 class="vision-etape__titre">Accompagner</h3>
+        <p class="vision-etape__texte">Réalisation, suivi, contrôle et réception.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="bande bande--beton bande--carrousel" aria-labelledby="t-projets">
   <div class="conteneur">
     <div class="tete-section">

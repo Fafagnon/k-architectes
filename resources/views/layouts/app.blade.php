@@ -26,7 +26,7 @@
 
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v={{ filemtime(public_path('assets/css/style.css')) }}">
 @stack('styles')
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}" defer></script>
 <script src="{{ asset('assets/js/main.js') }}" defer></script>
