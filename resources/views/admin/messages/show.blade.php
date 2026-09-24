@@ -45,7 +45,7 @@
         <strong style="font-size: .9375rem;">Pièce jointe fournie</strong>
         <div style="font-size: .8125rem; color: var(--graphite);">Fichier joint lors de la demande</div>
       </div>
-      <a href="{{ $message->attachment_url }}" target="_blank" download class="bouton" style="min-height: 38px; padding: 0 18px; font-size: .8125rem;">
+      <a href="{{ route('admin.messages.download', $message) }}" class="bouton" style="min-height: 38px; padding: 0 18px; font-size: .8125rem;">
         Télécharger la pièce jointe ⤓
       </a>
     </div>

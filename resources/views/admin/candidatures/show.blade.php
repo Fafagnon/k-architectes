@@ -49,7 +49,7 @@
       <h3 style="font-size: 1.125rem; margin: 0 0 4px 0;">Curriculum Vitae (CV)</h3>
       <div style="font-size: .8125rem; color: var(--graphite);">Document joint par le candidat</div>
     </div>
-    <a href="{{ $application->cv_url }}" target="_blank" download class="bouton" style="min-height: 42px; padding: 0 20px;">
+    <a href="{{ route('admin.candidatures.download', $application) }}" class="bouton" style="min-height: 42px; padding: 0 20px;">
       Télécharger le CV ⤓
     </a>
   </div>

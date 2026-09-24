@@ -27,6 +27,19 @@ class JobApplicationController extends Controller
         return view('admin.candidatures.show', compact('application'));
     }
 
+    public function download(JobApplication $application): \Symfony\Component\HttpFoundation\StreamedResponse|RedirectResponse
+    {
+        if (!$application->cv_path || !Storage::disk('public')->exists($application->cv_path)) {
+            return back()->with('erreur', 'Le fichier du CV est introuvable sur le serveur.');
+        }
+
+        $extension = pathinfo($application->cv_path, PATHINFO_EXTENSION);
+        $safeName = \Illuminate\Support\Str::slug($application->nom_complet);
+        $filename = 'CV_' . ($safeName ?: 'candidat') . ($extension ? '.' . $extension : '.pdf');
+
+        return Storage::disk('public')->download($application->cv_path, $filename);
+    }
+
     public function updateStatus(Request $request, JobApplication $application): RedirectResponse
     {
         $validated = $request->validate([

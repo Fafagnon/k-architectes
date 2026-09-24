@@ -201,6 +201,12 @@
     @if(session('succes'))
       <div class="flash-alert flash-alert--succes">{{ session('succes') }}</div>
     @endif
+    @if(session('erreur'))
+      <div class="flash-alert flash-alert--erreur">{{ session('erreur') }}</div>
+    @endif
+    @if(session('error'))
+      <div class="flash-alert flash-alert--erreur">{{ session('error') }}</div>
+    @endif
     @if(session('info'))
       <div class="flash-alert" style="background: var(--beton);">{{ session('info') }}</div>
     @endif

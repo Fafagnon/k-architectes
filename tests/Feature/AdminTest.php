@@ -11,6 +11,8 @@ use Tests\TestCase;
 
 class AdminTest extends TestCase
 {
+    use \Illuminate\Foundation\Testing\DatabaseTransactions;
+
     public function test_guest_is_redirected_to_admin_login(): void
     {
         $response = $this->get('/admin');
@@ -157,5 +159,72 @@ class AdminTest extends TestCase
         ])->assertRedirect();
 
         $this->assertEquals('contacted', $app->fresh()->status);
+    }
+
+    public function test_admin_can_download_job_application_cv(): void
+    {
+        Storage::fake('public');
+        $admin = User::first();
+
+        $path = UploadedFile::fake()->create('mon_cv.pdf', 100, 'application/pdf')
+            ->store('candidatures', 'public');
+
+        $app = \App\Models\JobApplication::create([
+            'nom' => 'Lawson',
+            'prenom' => 'Eric',
+            'email' => 'eric.lawson@example.com',
+            'telephone' => '+22890001122',
+            'poste_vise' => 'Architecte junior',
+            'message' => 'Ma candidature.',
+            'cv_path' => $path,
+            'status' => 'unread',
+        ]);
+
+        $response = $this->actingAs($admin)->get("/admin/candidatures/{$app->id}/download");
+        $response->assertStatus(200);
+        $this->assertTrue(str_contains($response->headers->get('content-disposition') ?? '', 'attachment'));
+    }
+
+    public function test_admin_can_download_contact_message_attachment(): void
+    {
+        Storage::fake('public');
+        $admin = User::first();
+
+        $path = UploadedFile::fake()->create('plan.pdf', 100, 'application/pdf')
+            ->store('contacts', 'public');
+
+        $message = \App\Models\ContactMessage::create([
+            'nom' => 'Koffi',
+            'prenom' => 'Jean',
+            'email' => 'jean.koffi@example.com',
+            'telephone' => '+22890000000',
+            'message' => 'Demande avec plan.',
+            'attachment_path' => $path,
+            'status' => 'unread',
+        ]);
+
+        $response = $this->actingAs($admin)->get("/admin/messages/{$message->id}/download");
+        $response->assertStatus(200);
+        $this->assertTrue(str_contains($response->headers->get('content-disposition') ?? '', 'attachment'));
+    }
+
+    public function test_download_redirects_with_error_when_file_is_missing(): void
+    {
+        $admin = User::first();
+
+        $app = \App\Models\JobApplication::create([
+            'nom' => 'Inconnu',
+            'prenom' => 'Test',
+            'email' => 'inconnu@example.com',
+            'telephone' => '+22890000000',
+            'poste_vise' => 'Architecte',
+            'message' => 'Test manquant.',
+            'cv_path' => 'candidatures/fichier_inexistant.pdf',
+            'status' => 'unread',
+        ]);
+
+        $response = $this->actingAs($admin)->get("/admin/candidatures/{$app->id}/download");
+        $response->assertRedirect();
+        $response->assertSessionHas('erreur');
     }
 }

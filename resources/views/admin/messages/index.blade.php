@@ -40,7 +40,7 @@
             </td>
             <td>
               @if($msg->attachment_path)
-                <a href="{{ $msg->attachment_url }}" target="_blank" class="lien" style="font-size: .8125rem;">Télécharger</a>
+                <a href="{{ route('admin.messages.download', $msg) }}" class="lien" style="font-size: .8125rem;">Télécharger ⤓</a>
               @else
                 <span style="color: var(--graphite); font-size: .8125rem;">Aucune</span>
               @endif

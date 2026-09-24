@@ -42,7 +42,7 @@
               <div><a href="tel:{{ $app->telephone }}">{{ $app->telephone }}</a></div>
             </td>
             <td>
-              <a href="{{ $app->cv_url }}" target="_blank" download class="bouton" style="min-height: 28px; padding: 0 10px; font-size: .75rem;">
+              <a href="{{ route('admin.candidatures.download', $app) }}" class="bouton" style="min-height: 28px; padding: 0 10px; font-size: .75rem;">
                 Télécharger CV ⤓
               </a>
             </td>

@@ -12,6 +12,8 @@ use Tests\TestCase;
 
 class PublicPagesTest extends TestCase
 {
+    use \Illuminate\Foundation\Testing\DatabaseTransactions;
+
     public function test_homepage_loads_successfully_with_articles(): void
     {
         $response = $this->get('/');

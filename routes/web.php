@@ -84,12 +84,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Messages de Contact
         Route::get('/messages', [AdminContactMessageController::class, 'index'])->name('messages.index');
         Route::get('/messages/{message}', [AdminContactMessageController::class, 'show'])->name('messages.show');
+        Route::get('/messages/{message}/download', [AdminContactMessageController::class, 'download'])->name('messages.download');
         Route::post('/messages/{message}/toggle', [AdminContactMessageController::class, 'toggleStatus'])->name('messages.toggle');
         Route::delete('/messages/{message}', [AdminContactMessageController::class, 'destroy'])->name('messages.destroy');
 
         // Candidatures
         Route::get('/candidatures', [AdminJobApplicationController::class, 'index'])->name('candidatures.index');
         Route::get('/candidatures/{application}', [AdminJobApplicationController::class, 'show'])->name('candidatures.show');
+        Route::get('/candidatures/{application}/download', [AdminJobApplicationController::class, 'download'])->name('candidatures.download');
         Route::patch('/candidatures/{application}/status', [AdminJobApplicationController::class, 'updateStatus'])->name('candidatures.updateStatus');
         Route::delete('/candidatures/{application}', [AdminJobApplicationController::class, 'destroy'])->name('candidatures.destroy');
     });

@@ -28,6 +28,19 @@ class ContactMessageController extends Controller
         return view('admin.messages.show', compact('message'));
     }
 
+    public function download(ContactMessage $message): \Symfony\Component\HttpFoundation\StreamedResponse|RedirectResponse
+    {
+        if (!$message->attachment_path || !Storage::disk('public')->exists($message->attachment_path)) {
+            return back()->with('erreur', 'La pièce jointe est introuvable sur le serveur.');
+        }
+
+        $extension = pathinfo($message->attachment_path, PATHINFO_EXTENSION);
+        $safeName = \Illuminate\Support\Str::slug($message->nom_complet);
+        $filename = 'Piece_jointe_' . ($safeName ?: 'contact') . ($extension ? '.' . $extension : '');
+
+        return Storage::disk('public')->download($message->attachment_path, $filename);
+    }
+
     public function toggleStatus(ContactMessage $message): RedirectResponse
     {
         $newStatus = $message->status === 'unread' ? 'read' : 'unread';
